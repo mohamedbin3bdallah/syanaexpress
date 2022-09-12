@@ -1,0 +1,456 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 18, 2021 at 02:15 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `syana_express`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cities`
+--
+drop table cities;
+
+CREATE TABLE `cities` (
+                          `id` int(11) NOT NULL,
+                          `name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+                          `name_ar` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+                          `country_id` int(11) DEFAULT NULL,
+                          `active` int(11) NOT NULL DEFAULT 1,
+                          `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`id`, `name`, `name_ar`, `country_id`, `active`, `updated_at`) VALUES
+(1, 'Heliopolis', 'مصر الجديده', 2, 1, NULL),
+(2, 'Nasr City', 'مدينه نصر', 2, 1, NULL),
+(3, 'El-Maadi', 'المعادي', 2, 1, NULL),
+(4, 'New Cairo', 'التجمع الخامس', 2, 1, NULL),
+(5, 'Hadayek El-Kobba', 'حدائق القبة', 2, 1, NULL),
+(6, 'El-Obour City', 'مدينة العبور', 2, 1, NULL),
+(7, 'El-Manyal', 'المنيل', 2, 1, NULL),
+(8, 'Shoubra', 'شبرا', 2, 1, NULL),
+(9, 'West El-Balad', 'وسط البلد', 2, 1, NULL),
+(10, '10th of Ramada', 'العاشر من رمضان', 2, 1, NULL),
+(11, 'Ain Shams', 'عين شمس', 2, 1, NULL),
+(12, 'El-Abbasia', 'العباسية', 2, 1, NULL),
+(13, 'El-Mokattam', 'المقطم', 2, 1, NULL),
+(14, 'El-Rehab', 'الرحاب', 2, 1, NULL),
+(15, 'El-Sayeda Zainab', 'السيدة زينب', 2, 1, NULL),
+(16, 'El-Shorouk', 'الشروق', 2, 1, NULL),
+(17, 'El-Zaitou', 'الزيتون', 2, 1, NULL),
+(18, 'El-Zamalek', 'الزمالك', 2, 1, NULL),
+(19, 'Helwa', 'حلوان', 2, 1, NULL),
+(20, 'Madinaty', 'مدينتي', 2, 1, NULL),
+(21, 'Masr El-Kadima', 'مصر القديمة', 2, 1, NULL),
+(22, 'Dokki and Mohandessin', 'الدقي و المهندسين', 2, 1, NULL),
+(23, '6th of October', '6 اكتوبر', 2, 1, NULL),
+(24, 'El-Haram', 'الهرم', 2, 1, NULL),
+(25, 'Faisal', 'فيصل', 2, 1, NULL),
+(26, 'El-Sheikh Zayed', 'الشيخ زايد', 2, 1, NULL),
+(27, 'Hadayek El-Ahram', 'حدائق الأهرام', 2, 1, NULL),
+(28, 'Al-Ajuza', 'العجوزة', 2, 1, NULL),
+(29, 'El-Giza', 'ميدان الجيزة', 2, 1, NULL),
+(30, 'Mahatet El-Raml', 'محطة الرمل', 2, 1, NULL),
+(31, 'Roshdy', 'رشدي', 2, 1, NULL),
+(32, 'Smouha', 'سموحة', 2, 1, NULL),
+(33, 'Sporting', 'سبورتينج', 2, 1, NULL),
+(34, 'Sidy Gaber', 'سيدي جابر', 2, 1, NULL),
+(35, 'Lora', 'لوران', 2, 1, NULL),
+(36, 'Camp Caesar', 'كامب شيزار', 2, 1, NULL),
+(37, 'El-Ibrahimia', 'الإبراهيمية', 2, 1, NULL),
+(38, 'Janaklees', 'جانكليس', 2, 1, NULL),
+(39, 'Abou Keir', 'ابو قير', 2, 1, NULL),
+(40, 'Bahary', 'بحري', 2, 1, NULL),
+(41, 'Bakos', 'باكوس', 2, 1, NULL),
+(42, 'Bulkly', 'بولكلي', 2, 1, NULL),
+(43, 'Cleopatra', 'كليوباترا', 2, 1, NULL),
+(44, 'El-Agamy', 'العجمي', 2, 1, NULL),
+(45, 'El-Amreya', 'العامرية', 2, 1, NULL),
+(46, 'El-Asafra', 'العصافرة', 2, 1, NULL),
+(47, 'El-Azarita', 'الأزاريطه', 2, 1, NULL),
+(48, 'El-Mansheyah', 'المنشية', 2, 1, NULL),
+(49, 'El-Montazah', 'المنتزه', 2, 1, NULL),
+(50, 'El-Seyouf', 'السيوف', 2, 1, NULL),
+(51, 'El-Shatby', 'الشاطبي', 2, 1, NULL),
+(52, 'El-Werdeya', 'الورديان', 2, 1, NULL),
+(53, 'Fouad Street', 'شارع فؤاد', 2, 1, NULL),
+(54, 'Glym', 'جليم', 2, 1, NULL),
+(55, 'Kafr Abdouh', 'كفر عبده', 2, 1, NULL),
+(56, 'King Mariout', 'كينج ماريوط', 2, 1, NULL),
+(57, 'Miamy', 'ميامي', 2, 1, NULL),
+(58, 'Moharam Bek', 'محرم بيك', 2, 1, NULL),
+(59, 'Moustafa Kamel', 'مصطفى كامل', 2, 1, NULL),
+(60, 'North Coast', 'الساحل الشمالي', 2, 1, NULL),
+(61, 'Saba Basha', 'سابا باشا', 2, 1, NULL),
+(62, 'San Stefano', 'سان ستيفانو', 2, 1, NULL),
+(63, 'Sidy Bishr', 'سيدي بشر', 2, 1, NULL),
+(64, 'Stanley', 'ستانلي', 2, 1, NULL),
+(65, 'Victoria', 'فيكتوريا', 2, 1, NULL),
+(66, 'Zizenia', 'زيزينيا', 2, 1, NULL),
+(67, 'Shoubra El-Kheima', 'شبرا الخيمة', 2, 1, NULL),
+(68, 'Mahalla', 'المحلة الكبرى', 2, 1, NULL),
+(69, 'Tanta', 'طنطا', 2, 1, NULL),
+(70, 'Shibin El-Kom', 'شبين الكوم', 2, 1, NULL),
+(71, 'Menouf', 'منوف', 2, 1, NULL),
+(72, 'Sadat City', 'مدينة السادات', 2, 1, NULL),
+(73, 'Ibsheway', 'ابشواي', 2, 1, NULL),
+(74, 'El-Mansoura', 'المنصورة', 2, 1, NULL),
+(75, 'El-Zagazig', 'الزقازيق', 2, 1, NULL),
+(76, 'Damanhur', 'دمنهور', 2, 1, NULL),
+(77, 'Marsa Matrouh', 'مرسى مطروح', 2, 1, NULL),
+(78, 'El Marg', 'المرج', 2, 1, NULL),
+(79, 'El Salam', 'السلام', 2, 1, NULL),
+(80, 'El Matareya', 'المطرية', 2, 1, NULL),
+(81, 'El Nuzhah (Airport)', 'النزهة (المطار)', 2, 1, NULL),
+(82, 'El Waili', 'الوايلي', 2, 1, NULL),
+(83, 'El Zawiyah El Hamra', 'الزاوية الحمراء', 2, 1, NULL),
+(84, 'El Sharabeya', 'الشرابية', 2, 1, NULL),
+(85, 'El Sahel', 'الساحل', 2, 1, NULL),
+(86, 'Rud El Farag', 'روض الفرج', 2, 1, NULL),
+(87, 'Bulaq', 'بولاق', 2, 1, NULL),
+(88, 'Azbakeya', 'الأزبكية', 2, 1, NULL),
+(89, 'Manshiyat Naser', 'منشأة ناصر ', 2, 1, NULL),
+(90, 'Qasr El Nil', 'قصر النيل', 2, 1, NULL),
+(91, 'Zamalek', 'الزمالك', 2, 1, NULL),
+(92, 'Abdeen', 'عابدين', 2, 1, NULL),
+(93, 'El Muski', 'الموسكي', 2, 1, NULL),
+(94, 'Bab El Shariyah', 'باب الشعرية', 2, 1, NULL),
+(95, 'El Zahir', 'الأزهر', 2, 1, NULL),
+(96, 'El Gamaliyah', 'الجمالية ', 2, 1, NULL),
+(97, 'El Darb El Ahmar', 'الدرب الأحمر', 2, 1, NULL),
+(98, 'El Khalifa', 'الخليفة', 2, 1, NULL),
+(99, 'El Basatin', 'البساتين', 2, 1, NULL),
+(100, 'Turah', 'طره', 2, 1, NULL),
+(101, '15 Mayu', '15 مايو', 2, 1, NULL),
+(102, 'El Tabin', 'التبين ', 2, 1, NULL),
+(103, 'Badr City (includes New Heliop', 'مدينة بدر (تشمل مدينة هليوبليس الجديدة)', 2, 1, NULL),
+(104, 'Kharga', 'الخارجة', 2, 1, NULL),
+(105, 'Farafra', 'الفرافرة ', 2, 1, NULL),
+(106, 'Dakhla', 'الداخلة', 2, 1, NULL),
+(107, 'Baris', 'باريس', 2, 1, NULL),
+(108, 'Suez', 'السويس', 2, 1, NULL),
+(109, 'Alarbaein', 'الأربعين', 2, 1, NULL),
+(110, 'Aljanayun', 'الجناين', 2, 1, NULL),
+(111, 'Faisal', 'فيصل', 2, 1, NULL),
+(112, 'Dahab', 'دهب', 2, 1, NULL),
+(113, 'El tor', 'الطور', 2, 1, NULL),
+(114, 'Nuweiba', 'نويبع ', 2, 1, NULL),
+(115, 'Saint Catherine', 'سانت كاترين ', 2, 1, NULL),
+(116, 'Sharm El Sheikh', 'شرم الشيخ ', 2, 1, NULL),
+(117, 'Taba', 'طابا ', 2, 1, NULL),
+(118, 'Akhmim', 'أخميم', 2, 1, NULL),
+(119, 'Dar El Salam', 'دار السلام', 2, 1, NULL),
+(120, 'El Balyana', 'البليانة', 2, 1, NULL),
+(121, 'El Maragha', 'المراغة', 2, 1, NULL),
+(122, 'Girga', 'جرجا', 2, 1, NULL),
+(123, 'Juhayna', 'جهينة', 2, 1, NULL),
+(124, 'Sohag', 'سوهاج', 2, 1, NULL),
+(125, 'Tahta', 'طهطا', 2, 1, NULL),
+(126, '10th of Ramadan', 'العاشر من رمضان.', 2, 1, NULL),
+(127, 'Abu Hammad', 'أبو حماد.', 2, 1, NULL),
+(128, 'Abu Kebir', 'أبو كبير.', 2, 1, NULL),
+(129, 'Awlad Saqr', 'اولاد صقر.', 2, 1, NULL),
+(130, 'Bilbeis', 'بلبيس', 2, 1, NULL),
+(131, 'Diyarb Negm', 'ديرب نجم.', 2, 1, NULL),
+(132, 'El Husseiniya', 'الحسينية.', 2, 1, NULL),
+(133, 'El Ibrahimiya', 'الإبراهيمية', 2, 1, NULL),
+(134, 'El Qurein', 'القرين.', 2, 1, NULL),
+(135, 'Faqous', 'فاقوس.', 2, 1, NULL),
+(136, 'Hihya', 'ههيا', 2, 1, NULL),
+(137, 'Kafr Saqr', 'كفر صقر.', 2, 1, NULL),
+(138, 'Mashtool El Souk', 'مشتول السوق', 2, 1, NULL),
+(139, 'Minya El Qamh', 'منياالقمح', 2, 1, NULL),
+(140, 'New Salhia', 'الصالحية الجديدة.', 2, 1, NULL),
+(141, 'Anfoushi', 'الانفوشى', 2, 1, NULL),
+(142, 'Dekhela', 'الدخيلة', 2, 1, NULL),
+(143, 'El Atareen', 'العطارين', 2, 1, NULL),
+(144, 'El Gomrok', 'الجمرك', 2, 1, NULL),
+(145, 'El Labban', 'اللبان', 2, 1, NULL),
+(146, 'El Maamora', 'المعمورة', 2, 1, NULL),
+(147, 'El Mandara', 'المندرة', 2, 1, NULL),
+(148, 'El Max', 'الماكس', 2, 1, NULL),
+(149, 'El Qabary', 'القبري', 2, 1, NULL),
+(150, 'El Saraya ', 'السرايا ', 2, 1, NULL),
+(151, 'Hadara', 'الحضرة', 2, 1, NULL),
+(152, 'Kafr Abdu', 'كفر عبده', 2, 1, NULL),
+(153, 'Karmoz', 'كرموز', 2, 1, NULL),
+(154, 'Kom El Deka', 'كوم الدكة', 2, 1, NULL),
+(155, 'Tharwat', 'ثروت', 2, 1, NULL),
+(156, 'Zezenia', 'زيزينيا', 2, 1, NULL),
+(157, 'Aswan', 'أسوان ', 2, 1, NULL),
+(158, 'Edfu', 'إدفو ', 2, 1, NULL),
+(159, 'Kom Ombo', 'كوم أمبو', 2, 1, NULL),
+(160, 'Draow', 'دراو', 2, 1, NULL),
+(161, 'Abnoub', 'أبنوب', 2, 1, NULL),
+(162, 'Asyut', 'أسيوط', 2, 1, NULL),
+(163, 'New Assiut', 'أسيوط الجديدة', 2, 1, NULL),
+(164, 'Badari', 'البداري', 2, 1, NULL),
+(165, 'Dayrout', 'ديروط', 2, 1, NULL),
+(166, 'Sidfa', 'صدفا', 2, 1, NULL),
+(167, 'The Ghanaim', 'الغنايم', 2, 1, NULL),
+(168, 'Qusiya', 'القوصية', 2, 1, NULL),
+(169, 'Manfalut', 'منفلوط', 2, 1, NULL),
+(170, 'Abu al-Matamir', 'أبو المطامير', 2, 1, NULL),
+(171, 'Abu Homs', 'أبو حمص', 2, 1, NULL),
+(172, 'Edco', 'إدكو', 2, 1, NULL),
+(173, 'Itai Baroud', 'إيتاي البارود', 2, 1, NULL),
+(174, 'Badr', 'بدر', 2, 1, NULL),
+(175, 'Delengat', 'الدلنجات', 2, 1, NULL),
+(176, 'Rahmaniyah', 'الرحمانية', 2, 1, NULL),
+(177, 'Rashid', 'رشيد', 2, 1, NULL),
+(178, 'Shubrakhit', 'شبراخيت', 2, 1, NULL),
+(179, 'Kafr El Dawar', 'كفر الدوار', 2, 1, NULL),
+(180, 'Com Hamada', 'كوم حمادة', 2, 1, NULL),
+(181, 'Mahmoudiyah', 'المحمودية', 2, 1, NULL),
+(182, 'New Nubaria', 'النوبارية الجديدة', 2, 1, NULL),
+(183, 'Wadi Natru', 'وادي النطرون', 2, 1, NULL),
+(184, 'Iihnasia', 'إهناسيا', 2, 1, NULL),
+(185, 'BBA', 'ببا', 2, 1, NULL),
+(186, 'New Beni Suef', 'بني سويف الجديدة', 2, 1, NULL),
+(187, 'Somasta', 'سمسطا', 2, 1, NULL),
+(188, 'Fashn', 'الفشن', 2, 1, NULL),
+(189, 'Naser', 'ناصر', 2, 1, NULL),
+(190, 'Al Wasta', 'الواسطى ', 2, 1, NULL),
+(191, 'Aga', 'أجا ', 2, 1, NULL),
+(192, 'Bilqas', 'بلقس ', 2, 1, NULL),
+(193, 'Damas', 'داماس', 2, 1, NULL),
+(194, 'Dikirnis', 'دكرنس', 2, 1, NULL),
+(195, 'El Gamaliya', 'الجمالية', 2, 1, NULL),
+(196, 'El Matareya', 'المطرية', 2, 1, NULL),
+(197, 'El Senbellawein', 'السنبلاوين', 2, 1, NULL),
+(198, 'Gamasa', 'جمصة', 2, 1, NULL),
+(199, 'Manzala', 'المنزلة', 2, 1, NULL),
+(200, 'Mit Elkorama', 'ميت الكوراما', 2, 1, NULL),
+(201, 'Mit Ghamr', 'ميت غمر', 2, 1, NULL),
+(202, 'Mit Salsil', 'ميت سالسيل', 2, 1, NULL),
+(203, 'Nabaroh', 'نباروه ', 2, 1, NULL),
+(204, 'Sherbin', 'شربين', 2, 1, NULL),
+(205, 'Talkha', 'طلخا', 2, 1, NULL),
+(206, 'Damietta', 'دمياط', 2, 1, NULL),
+(207, 'New Damietta', 'دمياط الجديدة', 2, 1, NULL),
+(208, 'Alruwda', 'الروضة ', 2, 1, NULL),
+(209, 'Zarqa', 'الزرقا ', 2, 1, NULL),
+(210, 'Alsarw', 'السرو ', 2, 1, NULL),
+(211, 'eizbat albaraj', 'عزبة البرج', 2, 1, NULL),
+(212, 'Faraskour', 'فارسكور', 2, 1, NULL),
+(213, 'Kafr El - Batikh', 'كفر البطيخ', 2, 1, NULL),
+(214, 'Meet Abu Ghaleb', 'ميت أبو غالب', 2, 1, NULL),
+(215, 'Fayoum', 'الفيوم', 2, 1, NULL),
+(216, 'Snores', 'سنورس', 2, 1, NULL),
+(217, 'Atsa', 'اطسا', 2, 1, NULL),
+(218, 'Tamiya', 'طامية', 2, 1, NULL),
+(219, 'Yusuf Alsadiq', 'يوسف الصديق', 2, 1, NULL),
+(220, 'Kafr El Zayat', 'كفر الزيات', 2, 1, NULL),
+(221, 'Santa', 'السنطة', 2, 1, NULL),
+(222, 'Al Mahalla Al Kobra', 'المحلة الكبرى', 2, 1, NULL),
+(223, 'Basion', 'بسيون', 2, 1, NULL),
+(224, 'Zefta', 'زفتى', 2, 1, NULL),
+(225, 'Samannoud', 'سمنود', 2, 1, NULL),
+(226, 'Kutour', 'قطور', 2, 1, NULL),
+(227, 'Dokki', 'الدقي', 2, 1, NULL),
+(228, 'Bulaq ad Dakrur', 'بولاق الدكرور', 2, 1, NULL),
+(229, 'Imbabah', 'إمبابة', 2, 1, NULL),
+(230, 'Omrania', 'العمرانية', 2, 1, NULL),
+(231, 'Monib', 'المنيب', 2, 1, NULL),
+(232, 'Kafr Tuhurmus', 'كفر طهرمس', 2, 1, NULL),
+(233, 'Altal alkabir', 'التل الكبير', 2, 1, NULL),
+(234, 'Fayd', 'فايد', 2, 1, NULL),
+(235, 'Alqintarat shrq', 'القنطرة شرق', 2, 1, NULL),
+(236, 'Alqintarat gharb', 'القنطرة غرب', 2, 1, NULL),
+(237, 'Abuswir', 'أبوصوير', 2, 1, NULL),
+(238, 'Alqasasin', 'القصاصين', 2, 1, NULL),
+(239, 'kafar Alshaykh', 'كفر الشيخ', 2, 1, NULL),
+(240, 'Sayidi Ghazi.', 'سيدي غازي.', 2, 1, NULL),
+(241, 'Dusuq.', 'دسوق.', 2, 1, NULL),
+(242, 'Fawh.', 'فوه.', 2, 1, NULL),
+(243, 'Baltim', ' بلطيم ', 2, 1, NULL),
+(244, 'Albarils.', ' البرلس.', 2, 1, NULL),
+(245, 'Bayla.', 'بيلا.', 2, 1, NULL),
+(246, 'Sayidi Salim.', 'سيدي سالم.', 2, 1, NULL),
+(247, 'Alhamul.', 'الحامول.', 2, 1, NULL),
+(248, 'Qalin.', 'قلين.', 2, 1, NULL),
+(249, 'Mutubis', 'مطوبس', 2, 1, NULL),
+(250, 'Alriyad', 'الرياض', 2, 1, NULL),
+(251, 'Armant', 'أرمنت', 2, 1, NULL),
+(252, 'Luxor', 'الأقصر', 2, 1, NULL),
+(253, 'New Luxor', 'الأقصر الجديدة', 2, 1, NULL),
+(254, 'Esna', 'إسنا', 2, 1, NULL),
+(255, 'Al Bayadiya', 'البياضية ', 2, 1, NULL),
+(256, 'Al Zinia', 'الزينية', 2, 1, NULL),
+(257, 'AL Tud', 'الطود ', 2, 1, NULL),
+(258, 'New Tiba ', 'طيبة الجديدة', 2, 1, NULL),
+(259, 'Alhammam', 'الحمام‏ ', 2, 1, NULL),
+(260, 'Salloum', 'السلوم‏ ', 2, 1, NULL),
+(261, 'Sidi Brani', 'سيدي براني‏ ', 2, 1, NULL),
+(262, 'Siwa', 'سيوة‏ ', 2, 1, NULL),
+(263, 'Al Dabaa', 'الضبعة‏ ', 2, 1, NULL),
+(264, 'Alalmein', 'العلمين‏ ', 2, 1, NULL),
+(265, 'Marsa Matruh', 'مرسى مطروح‏ ', 2, 1, NULL),
+(266, 'Najila', 'النجيلة‏ ', 2, 1, NULL),
+(267, 'Magagha', 'مغاغة', 2, 1, NULL),
+(268, 'Bani Mazar', 'بني مزار', 2, 1, NULL),
+(269, 'Mattay', 'مطاي', 2, 1, NULL),
+(270, 'Samalut', 'سمالوط', 2, 1, NULL),
+(271, 'Menia', 'المنيا', 2, 1, NULL),
+(272, 'Abu Qurqas', 'أبو قرقاص', 2, 1, NULL),
+(273, 'Malawy', 'ملوي', 2, 1, NULL),
+(274, 'Deir Mawas', 'دير مواس', 2, 1, NULL),
+(275, 'AlAdwa', 'العدوة', 2, 1, NULL),
+(276, 'Alshuhadaa', 'الشهداء', 2, 1, NULL),
+(277, 'Ashmon', 'أشمون', 2, 1, NULL),
+(278, 'Albajur', 'الباجور', 2, 1, NULL),
+(279, 'Barikat alsbe', 'بركة السبع', 2, 1, NULL),
+(280, 'Sars El-Layan', 'سرس الليان', 2, 1, NULL),
+(281, 'Quesna', 'قويسنا', 2, 1, NULL),
+(282, 'tala', 'تلا', 2, 1, NULL),
+(283, 'Biir aleabd', 'بئر العبد', 2, 1, NULL),
+(284, 'Nakhl', 'نخل', 2, 1, NULL),
+(285, 'Alhasana', 'الحسنة', 2, 1, NULL),
+(286, 'Alearish', 'العريش', 2, 1, NULL),
+(287, 'Alshaykh zawid', 'الشيخ زويد', 2, 1, NULL),
+(288, 'Rafah', 'رفح', 2, 1, NULL),
+(289, 'Port Fowad', 'بورفؤاد', 2, 1, NULL),
+(290, 'Hayi Aljanub', 'حي الجنوب', 2, 1, NULL),
+(291, 'Hayi Alarab', 'حي العرب', 2, 1, NULL),
+(292, 'Hayi Alshrq', 'حي الشرق', 2, 1, NULL),
+(293, 'Hayi Aldawahi', 'حي الضواحى', 2, 1, NULL),
+(294, 'Hayi Alzuhuwr', 'حي الزهور', 2, 1, NULL),
+(295, 'Hayi Almunakh', 'حي المناخ', 2, 1, NULL),
+(296, 'Hayi Gharb', 'حي غرب', 2, 1, NULL),
+(297, 'Alqanatir alkhayria', 'القناطر الخيرية', 2, 1, NULL),
+(298, 'Banha', 'بنها', 2, 1, NULL),
+(299, 'Bahtim', 'بهتيم', 2, 1, NULL),
+(300, 'Alkhusus', 'الخصوص', 2, 1, NULL),
+(301, 'Shabin Alqanatir', 'شبين القناطر', 2, 1, NULL),
+(302, 'Tukh', 'طوخ', 2, 1, NULL),
+(303, 'Aloubur', 'العبور ', 2, 1, NULL),
+(304, 'Qalyub', 'قليوب', 2, 1, NULL),
+(305, 'Qaha', 'قها', 2, 1, NULL),
+(306, 'Kafar Shakar', 'كفر شكر', 2, 1, NULL),
+(307, 'Abu Tesht', 'أبو تشت', 2, 1, NULL),
+(308, 'Farshout', 'فرشوط', 2, 1, NULL),
+(309, 'Nag Hammadi', 'نجع حمادي', 2, 1, NULL),
+(310, 'Alwaqf', 'الوقف', 2, 1, NULL),
+(311, 'Deshna', 'دشنا', 2, 1, NULL),
+(312, 'Qena', 'قنا ', 2, 1, NULL),
+(313, 'Qaft', 'قفط', 2, 1, NULL),
+(314, 'Qus', 'قوص', 2, 1, NULL),
+(315, 'Naqada', 'نقادة', 2, 1, NULL),
+(316, 'Ras Ghareb', 'رأس غارب', 2, 1, NULL),
+(317, 'Hurghada', 'الغردقة', 2, 1, NULL),
+(318, 'Alqusair', 'القصير', 2, 1, NULL),
+(319, 'Safaga', 'سفاجا', 2, 1, NULL),
+(320, 'Marsa Alam', 'مرسى علم', 2, 1, NULL),
+(321, 'Bernice', 'برنيس ', 2, 1, NULL),
+(322, 'Shalatin', 'شلاتين', 2, 1, NULL),
+(323, 'Halaib', 'حلايب ', 2, 1, NULL),
+(324, 'Cairo', 'القاهرة', 2, 1, NULL),
+(325, 'Alexandria', 'الإسكندرية', 2, 1, NULL),
+(326, 'Gharbia', 'الغربية', 2, 1, NULL),
+(327, 'Beni Suaif', 'بني سويف', 2, 1, NULL),
+(328, 'El-Sharqia', 'الشرقية', 2, 1, NULL),
+(329, 'Port Said', 'بور سعيد', 2, 1, NULL),
+(330, 'Ismailia', 'الإسماعيلية', 2, 1, NULL),
+(331, 'El-Dakahlia', 'الدقهلية', 2, 1, NULL),
+(332, 'El-Beheira', 'البحيرة', 2, 1, NULL),
+(333, 'Qalyubia', 'القليوبية', 2, 1, NULL),
+(334, 'Menoufia', 'المنوفية', 2, 1, NULL),
+(335, 'Abhā', 'أبها', 1, 1, NULL),
+(336, 'Abqaiq', 'أبقايق', 1, 1, NULL),
+(337, 'Al-Baḥah', 'البهاء', 1, 1, NULL),
+(338, 'Al-Dammām', 'الدمام', 1, 1, NULL),
+(339, 'Al-Hufūf', 'الهفوف', 1, 1, NULL),
+(340, 'Al-Jawf', 'الجوف', 1, 1, NULL),
+(341, 'Al-Kharj (oasis)', 'الخرج (واحة)', 1, 1, NULL),
+(342, 'Al-Khubar', 'الخبر', 1, 1, NULL),
+(343, 'Al-Qaṭīf', 'القطيف', 1, 1, NULL),
+(344, 'Al-Ṭaʾif', 'الطائف', 1, 1, NULL),
+(345, 'ʿArʿar', 'عرعر', 1, 1, NULL),
+(346, 'Buraydah', 'بريده', 1, 1, NULL),
+(347, 'Dhahran', 'دهران', 1, 1, NULL),
+(348, 'Ḥāʾil', 'حائل', 1, 1, NULL),
+(349, 'Jiddah', 'جده', 1, 1, NULL),
+(350, 'Jīzān', 'جيزان', 1, 1, NULL),
+(351, 'Khamīs Mushayt', 'خميس مشيط', 1, 1, NULL),
+(352, 'King Khalīd Military City', 'مدينة الملك خالد العسكرية', 1, 1, NULL),
+(353, 'Mecca', 'مكة', 1, 1, NULL),
+(354, 'Medina', 'المدينة', 1, 1, NULL),
+(355, 'Najrān', 'نجران', 1, 1, NULL),
+(356, 'Ras Tanura', 'راس تنورة', 1, 1, NULL),
+(357, 'Riyadh', 'الرياض', 1, 1, NULL),
+(358, 'Sakākā', 'سكاكه', 1, 1, NULL),
+(359, 'Tabūk', 'تبوك', 1, 1, NULL),
+(360, 'Yanbuʿ', 'ينبع', 1, 1, NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `country_id` (`country_id`),
+  ADD KEY `active` (`active`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=603;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+ALTER TABLE `user` ADD `api_token` VARCHAR(60) NULL AFTER `phonecode`, ADD `api_token_time` INT(11) NULL AFTER `api_token`;
+
+
+ALTER TABLE `artist_wallet_transfer_cash_requests` ADD `comment` TEXT NULL AFTER `status`;
+
+
+ALTER TABLE `user` ADD `iban` VARCHAR(100) NULL AFTER `account_no`;
+
+
+
+/*28-1-2022 */
+ALTER TABLE `countries` ADD `vat_value` DECIMAL NOT NULL DEFAULT '0' AFTER `phonecode`;
+
+ALTER TABLE `booking_invoice` CHANGE `tax` `tax` DECIMAL(20,2) NOT NULL;
+ALTER TABLE `booking_invoice` CHANGE `artist_amount` `artist_amount` DECIMAL(20,2) NOT NULL DEFAULT '0';
+ALTER TABLE `booking_invoice` CHANGE `total_amount` `total_amount` DECIMAL(20,2) NOT NULL DEFAULT '0';
+ALTER TABLE `booking_invoice` CHANGE `discount_amount` `discount_amount` DECIMAL(20,2) NOT NULL;
+
+
+/* 20/2/2022 */
+
+ALTER TABLE `artist_wallet_transactions`
+    ADD COLUMN `reference_id` int(11) NULL after artist_wallet_transaction_types_id;
